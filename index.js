@@ -1,7 +1,9 @@
-/* Cuando hago CLICK .button, .nav TOGGLE 'activo' */
-const button=document.querySelector('.button')
-const nav=document.querySelector('.nav')
+const ham=document.querySelector('.ham');
+const enlaces= document.querySelector('.enlaces-menu');
+const barras=document.querySelectorAll('.ham span');
 
-button=addEventListener('click',()=>{
-    nav.classList.toggle('activo')
-})
+ham.addEventListener('click', ()=>{
+    enlaces.classList.toggle('activado');
+    barras.forEach(child=>{child.classList.toggle('animado')});
+
+});

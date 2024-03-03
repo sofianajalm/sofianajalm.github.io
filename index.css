@@ -1,68 +1,130 @@
-H1 {
-    color: blue;
-    font-size:14px;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap');
+html{
+    font-size: 62.5%;
+    box-sizing: border-box;
 }
 
-.header{
-    width: 100%;
-    background-color: #282828;
-    padding: 1em;
+*,*::before, *::after{
+    box-sizing: inherit;
+}
 
+body{
+    padding: 0;
+    margin: 0;
+    line-height: 1.6;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: url('fondo.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.logo{
+    width: 120px;
+    height: 25px;
+}
+
+.nav{
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
     align-items: center;
-    color: white;
+    justify-content: space-around;
+    min-height: 8vh;
+    background-color: #054ab9;
 }
-
-.header .button{
+.ham{
     display: none;
     cursor: pointer;
-}
-.header .svg{
-    width: 2em;
-    height: 2em;
-    fill: white;
-
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
 }
 
-.header .ul{
+.ham span{
+    display: block;
+    background-color: #f3f3f3;
+    height: 3px;
+    width: 28px;
+    margin: 10px auto;
+    border-radius: 2px;
+
+}
+.enlaces-menu{
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-end;
-    align-items: center;
+    padding: 0;
 }
-.header .il{
-    margin: 0 .5em;
+.enlaces-menu li{
+    padding: 0 40px;
+    list-style-type: none;
+    transition: 0.3s;
 }
 
-@media screen and (max-width:480px){
-    .header .button{
-        display: block;
-    }
-    .header .nav{
-        width: 100%;
-        /*display: none;*/
-        height: 0;
-        pointer-events: none;
+.enlaces-menu li a{
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #f3f3f3;
+    font-weight: 600;
+}
+.enlaces-menu li:hover{
+    background-color: rgb(62, 130,197);
+}
+
+/*Dispositivos móviles*/
+@media (max-width: 768px){
+    body{
         overflow: hidden;
-        transition: all .5s ease;
-
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: center;
-        align-items: center;
     }
-    .header .nav.activo{
-       /* display: block;*/
-       height: 50vh;
-       pointer-events: auto;
-
+    .logo{
+        padding-left: 25px;
     }
-    .header .ul{
+    .ham{
+        display: block;
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        transition: 0.2s 0.1s;
+    }
+    .ham:hover{
+        transform: rotate(360deg);
+    }
+    nav{
         flex-direction: column;
+        align-items: flex-start;
+        padding: 25px 0;
     }
-    .header .li{
-        margin: 1em 0;
+    .enlaces-menu{
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 92vh;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        display: none;
+        opacity: 0;
     }
+    .enlaces-menu li{
+        width: 100%;
+        text-align: center;
+        padding: 20px;
+
+    }
+}
+
+@keyframes muestraMenu{
+    from{opacity: 0;}
+    to{opacity:1;}
+}
+.enlaces-menu.activado{
+    display: flex;
+    animation: muestraMenu 350ms ease-in-out
+    both;
+}
+
+.br-1.animado{
+    transform: rotate(-45deg) translate(-10px,8px);
+}
+.br-2.animado{
+    opacity: 0;
+}
+.br-3.animado{
+    transform: rotate(45deg) translate(-10px,-8px);
 }
