@@ -33,7 +33,7 @@ H1 {
     align-items: center;
 }
 .header .il{
-    margin: 0.5em;
+    margin: 0 .5em;
 }
 
 @media screen and (max-width:480px){
